@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Group Root",
+            "type": "shell",
+            "command": "node rootGrouper.js",
+            "problemMatcher": []
+        }
+    ],
+}

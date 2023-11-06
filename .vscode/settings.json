@@ -1,0 +1,37 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "root": ".gitignore, Cargo.lock, Cargo.toml, README.md, rootGrouper.js"
+},
+"taskExplorer.exclude": [
+    "**/.vscode-test/**",
+    "**/Assets/**",
+    "**/bin/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/doc/**",
+    "**/example/**",
+    "**/examples/**",
+    "**/ext/**",
+    "**/obj/**",
+    "**/out/**",
+    "**/output/**",
+    "**/packages/**",
+    "**/release/**",
+    "**/releases/**",
+    "**/samples/**",
+    "**/sdks/**",
+    "**/static/**",
+    "**/target/**",
+    "**/test/**",
+    "**/third_party/**",
+    "**/vendor/**",
+    "**/work/**",
+    "/C:/Users/shead/AppData/Roaming/vscode/tasks.json"
+],
+"taskExplorer.excludeTask": [
+    "pre-launch[0-9]{2}\\.r(?:b|c)",
+    "echo"
+]
+}
