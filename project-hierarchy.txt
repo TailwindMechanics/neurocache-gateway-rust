@@ -1,0 +1,26 @@
+neurocache-gateway
+├─ .dockerignore
+├─ .gitignore
+├─ .vscode
+│  ├─ settings.json
+│  └─ tasks.json
+├─ autoCommentPath.js
+├─ Cargo.lock
+├─ Cargo.toml
+├─ compose.yaml
+├─ Dockerfile
+├─ project-hierarchy.txt
+├─ README.md
+├─ root
+├─ rootGrouper.js
+└─ src
+   ├─ crates
+   │  └─ logger
+   │     ├─ Cargo.lock
+   │     ├─ Cargo.toml
+   │     └─ src
+   │        ├─ internal
+   │        │  ├─ logger.rs
+   │        │  └─ mod.rs
+   │        └─ lib.rs
+   └─ main.rs
