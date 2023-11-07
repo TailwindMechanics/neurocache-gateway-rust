@@ -1,14 +1,14 @@
 //path: src\main.rs
 
-use axum::{routing::get, Router};
+use axum::{Router, Server};
 use logger::log_info;
 use std::net::SocketAddr;
 
-const HELLO_WORLD_MESSAGE: &str = "♫ Hello world, this is me ♫";
-
 #[tokio::main]
 async fn main() {
-    let app = Router::new().route("/", get(hello_world));
+    let app = Router::new()
+        .merge(health::service())
+        .merge(root::service());
 
     let port = std::env::var("PORT")
         .ok()
@@ -17,14 +17,10 @@ async fn main() {
 
     let address = SocketAddr::from(([0, 0, 0, 0], port));
 
-    log_info(HELLO_WORLD_MESSAGE);
+    log_info("---> Neurocache Gateway Started <---");
 
-    axum::Server::bind(&address)
+    Server::bind(&address)
         .serve(app.into_make_service())
         .await
         .unwrap();
-}
-
-async fn hello_world() -> &'static str {
-    HELLO_WORLD_MESSAGE
 }

@@ -1,4 +1,5 @@
 {
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "explorer.compactFolders": false,
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
@@ -13,7 +14,7 @@
         "External": "Import",
         "Internal": "Export",
         "Composer": "Examples",
-        "Dev": "Tools",
+        "health": "Tools",
         "Graph": "Shader",
         "OpenAi": "Custom",
         "ThreeFiber": "Middleware",
@@ -21,13 +22,14 @@
         "presets": "Middleware",
         "behaviour": "Less",
         "nodes": "Public",
-        "reflection": "Decorators",
+        "root": "Decorators",
         "Agents": "Robot",
         "Drawer": "Class",
         "Avatars": "Robot",
         "Persona": "Admin",
         "Crates": "Packages",
         "Logger": "Log",
+        "GitIgnored": "Private",
     },
     "rust-analyzer.linkedProjects": [
         ".\\src\\crates\\logger\\Cargo.toml"
