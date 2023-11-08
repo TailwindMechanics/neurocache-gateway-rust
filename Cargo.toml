@@ -5,14 +5,17 @@ edition = "2021"
 
 [dependencies]
 axum = "0.6.20"
-tokio = { version = "1.33.0", features = ["macros", "rt-multi-thread"] }
+tokio-stream = "0.1.14"
+tokio = { version = "1.33.0", features = ["full"] }
 logger = { path = "src/crates/logger" }
 health = { path = "src/crates/health" }
+agent = { path = "src/crates/agent" }
 root = { path = "src/crates/root" }
 
 [workspace]
 members = [
-    "src/crates/logger",
     "src/crates/health",
+    "src/crates/logger",
+    "src/crates/agent",
     "src/crates/root",
 ]

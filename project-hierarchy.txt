@@ -1,5 +1,6 @@
 neurocache-gateway
 ├─ .dockerignore
+├─ .env.local
 ├─ .gitignore
 ├─ .vscode
 │  ├─ settings.json
@@ -9,16 +10,19 @@ neurocache-gateway
 ├─ Cargo.toml
 ├─ compose.yaml
 ├─ Dockerfile
-├─ gitignored
-│  └─ log_exporter
-│     ├─ inlinetomly.md
-│     └─ log_exporter.toml
 ├─ project-hierarchy.txt
 ├─ README.md
 ├─ root
 ├─ rootGrouper.js
 └─ src
    ├─ crates
+   │  ├─ agent
+   │  │  ├─ Cargo.toml
+   │  │  └─ src
+   │  │     ├─ internal
+   │  │     │  ├─ mod.rs
+   │  │     │  └─ run_agent.rs
+   │  │     └─ lib.rs
    │  ├─ health
    │  │  ├─ Cargo.toml
    │  │  └─ src

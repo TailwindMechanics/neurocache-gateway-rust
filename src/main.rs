@@ -8,7 +8,8 @@ use std::net::SocketAddr;
 async fn main() {
     let app = Router::new()
         .merge(health::service())
-        .merge(root::service());
+        .merge(root::service())
+        .merge(agent::service());
 
     let port = std::env::var("PORT")
         .ok()

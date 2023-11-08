@@ -13,7 +13,8 @@ if (!fs.existsSync(settingsDirectoryPath)) {
 // Ensure settings.json file exists
 let settings = {};
 if (fs.existsSync(settingsFilePath)) {
-    settings = JSON.parse(fs.readFileSync(settingsFilePath, "utf8"));
+    const settingsContent = fs.readFileSync(settingsFilePath, "utf8");
+    settings = JSON.parse(settingsContent);
 } else {
     fs.writeFileSync(settingsFilePath, JSON.stringify(settings));
 }
