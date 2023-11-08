@@ -1,8 +1,8 @@
 //path: src\crates\agent\src\internal\run_agent.rs
 
 use axum::{
-    extract,
     response::sse::{Event, Sse},
+    Json,
 };
 use futures::Stream;
 use std::time::Duration;
@@ -10,13 +10,13 @@ use tokio::sync::mpsc;
 use tokio::time::sleep;
 use tokio_stream::wrappers::ReceiverStream;
 
-use crate::AgentQueryParams;
+use crate::AgentData;
 
 pub async fn run_agent(
-    extract::Query(query_params): extract::Query<AgentQueryParams>,
+    Json(agent_data): Json<AgentData>,
 ) -> Sse<impl Stream<Item = Result<Event, axum::Error>> + Send + 'static> {
     let (tx, rx) = mpsc::channel(1);
-    let words = query_params
+    let words = agent_data
         .payload
         .split_whitespace()
         .map(String::from)
@@ -24,7 +24,7 @@ pub async fn run_agent(
 
     tokio::spawn(async move {
         tx.send(Ok(
-            Event::default().data(format!("<start agentid={}>", query_params.agent_id))
+            Event::default().data(format!("<start agentid={}>", agent_data.agent_id))
         ))
         .await
         .ok();
