@@ -23,13 +23,18 @@ pub async fn run_agent(
         .collect::<Vec<String>>();
 
     tokio::spawn(async move {
-        tx.send(Ok(Event::default().data("<start>"))).await.ok();
+        tx.send(Ok(
+            Event::default().data(format!("<start agentid={}>", query_params.agent_id))
+        ))
+        .await
+        .ok();
+
         for word in words {
-            sleep(Duration::from_secs(3)).await;
+            sleep(Duration::from_secs(1)).await;
             tx.send(Ok(Event::default().data(word))).await.ok();
         }
 
-        tx.send(Ok(Event::default().data("<end>"))).await.ok();
+        tx.send(Ok(Event::default().data("</end>"))).await.ok();
     });
 
     Sse::new(ReceiverStream::new(rx))
