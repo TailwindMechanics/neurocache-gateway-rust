@@ -15,6 +15,9 @@ services:
       - "3000:3000"
     environment:
       - RUST_LOG=debug
+    env_file:
+      - .env.local
+
 
 
 # The commented out section below is an example of how to define a PostgreSQL

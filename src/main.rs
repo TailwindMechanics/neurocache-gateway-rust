@@ -18,7 +18,7 @@ async fn main() {
 
     let address = SocketAddr::from(([0, 0, 0, 0], port));
 
-    log_info("---> Neurocache Gateway Started <---");
+    log_info!("---> Neurocache Gateway Started <---");
 
     Server::bind(&address)
         .serve(app.into_make_service())

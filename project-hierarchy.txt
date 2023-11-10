@@ -23,6 +23,10 @@ neurocache-gateway
    │  │     │  ├─ mod.rs
    │  │     │  └─ run_agent.rs
    │  │     └─ lib.rs
+   │  ├─ agent_types
+   │  │  ├─ Cargo.toml
+   │  │  └─ src
+   │  │     └─ lib.rs
    │  ├─ health
    │  │  ├─ Cargo.toml
    │  │  └─ src
@@ -31,11 +35,12 @@ neurocache-gateway
    │  │  ├─ Cargo.lock
    │  │  ├─ Cargo.toml
    │  │  └─ src
-   │  │     ├─ internal
-   │  │     │  ├─ logger.rs
-   │  │     │  └─ mod.rs
    │  │     └─ lib.rs
-   │  └─ root
+   │  ├─ root
+   │  │  ├─ Cargo.toml
+   │  │  └─ src
+   │  │     └─ lib.rs
+   │  └─ supabase
    │     ├─ Cargo.toml
    │     └─ src
    │        └─ lib.rs

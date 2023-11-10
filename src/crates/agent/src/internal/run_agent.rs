@@ -1,40 +1,28 @@
 //path: src\crates\agent\src\internal\run_agent.rs
 
-use axum::{
-    response::sse::{Event, Sse},
-    Json,
-};
+use agent_types::AgentGraphData;
+use axum::response::sse::{Event, Sse};
 use futures::Stream;
 use std::time::Duration;
 use tokio::sync::mpsc;
 use tokio::time::sleep;
 use tokio_stream::wrappers::ReceiverStream;
 
-use crate::AgentData;
-
-pub async fn run_agent(
-    Json(agent_data): Json<AgentData>,
+pub async fn run_agent_stream(
+    agent_graph_data: AgentGraphData,
 ) -> Sse<impl Stream<Item = Result<Event, axum::Error>> + Send + 'static> {
     let (tx, rx) = mpsc::channel(1);
-    let words = agent_data
-        .payload
-        .split_whitespace()
-        .map(String::from)
-        .collect::<Vec<String>>();
 
     tokio::spawn(async move {
-        tx.send(Ok(
-            Event::default().data(format!("<start agentid={}>", agent_data.agent_id))
-        ))
-        .await
-        .ok();
+        tx.send(Ok(Event::default().data("<start>"))).await.unwrap();
 
-        for word in words {
+        for node in agent_graph_data.nodes {
             sleep(Duration::from_secs(1)).await;
-            tx.send(Ok(Event::default().data(word))).await.ok();
+            let node_data = serde_json::to_string(&node.data).unwrap();
+            tx.send(Ok(Event::default().data(node_data))).await.unwrap();
         }
 
-        tx.send(Ok(Event::default().data("</end>"))).await.ok();
+        tx.send(Ok(Event::default().data("</end>"))).await.unwrap();
     });
 
     Sse::new(ReceiverStream::new(rx))

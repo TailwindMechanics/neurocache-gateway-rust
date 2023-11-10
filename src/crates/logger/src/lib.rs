@@ -1,20 +1,58 @@
 //path: src\crates\logger\src\lib.rs
 
-use log::Level;
-mod internal;
-
-pub fn log(message: &str) {
-    internal::logger::log(message, Level::Debug);
+#[macro_export]
+macro_rules! log {
+    ($msg:expr) => {{
+        println!("{}", $msg);
+    }};
 }
 
-pub fn log_info(message: &str) {
-    internal::logger::log(message, Level::Info);
+#[macro_export]
+macro_rules! log_info {
+    ($msg:expr) => ({
+        println!("{}", $msg);
+    });
+    ($fmt:expr, $($arg:tt)*) => ({
+        println!(concat!("INFO: ", $fmt), $($arg)*);
+    });
 }
 
-pub fn log_warn(message: &str) {
-    internal::logger::log(message, Level::Warn);
+#[macro_export]
+macro_rules! log_debug {
+    ($msg:expr) => ({
+        println!("{}", $msg);
+    });
+    ($fmt:expr, $($arg:tt)*) => ({
+        println!(concat!("DEBUG: ", $fmt), $($arg)*);
+    });
 }
 
-pub fn log_error(message: &str) {
-    internal::logger::log(message, Level::Error);
+#[macro_export]
+macro_rules! log_warn {
+    ($msg:expr) => ({
+        println!("{}", $msg);
+    });
+    ($fmt:expr, $($arg:tt)*) => ({
+        println!(concat!("WARN: ", $fmt), $($arg)*);
+    });
+}
+
+#[macro_export]
+macro_rules! log_error {
+    ($msg:expr) => ({
+        eprintln!("{}", $msg);
+    });
+    ($fmt:expr, $($arg:tt)*) => ({
+        eprintln!(concat!("ERROR: ", $fmt), $($arg)*);
+    });
+}
+
+#[macro_export]
+macro_rules! log_trace {
+    ($msg:expr) => ({
+        println!("{}", $msg);
+    });
+    ($fmt:expr, $($arg:tt)*) => ({
+        println!(concat!("TRACE: ", $fmt), $($arg)*);
+    });
 }

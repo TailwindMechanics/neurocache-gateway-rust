@@ -23,13 +23,14 @@
     "presets": "Middleware",
     "behaviour": "Less",
     "nodes": "Public",
-    "root": "Decorators",
+    "root": "Base",
     "Agents": "Robot",
     "Drawer": "Class",
     "Agent": "Robot",
     "Persona": "Admin",
     "Crates": "Packages",
     "Logger": "Log",
-    "GitIgnored": "Private"
+    "GitIgnored": "Private",
+    "Agent_Types": "Decorators",
   }
 }
