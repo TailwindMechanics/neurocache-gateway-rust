@@ -18,7 +18,7 @@ pub async fn run_agent_stream(
 
         for node in agent_graph_data.nodes {
             sleep(Duration::from_secs(1)).await;
-            let node_data = serde_json::to_string(&node.data).unwrap();
+            let node_data = serde_json::to_string(&node).unwrap();
             tx.send(Ok(Event::default().data(node_data))).await.unwrap();
         }
 
