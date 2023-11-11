@@ -5,15 +5,17 @@ FROM rust:1.73.0-slim-bullseye AS builder
 WORKDIR /usr/src/myapp
 COPY . .
 
-# Install pkg-config and OpenSSL development files
-RUN apt-get update && apt-get install -y pkg-config libssl-dev
+# Install necessary packages
+RUN apt-get update && apt-get install -y pkg-config libssl-dev ca-certificates && rm -rf /var/lib/apt/lists/*
 
-# This command builds your application
+# Build your application
 RUN cargo install --path .
 
 # Run stage
 FROM debian:bullseye-slim
 COPY --from=builder /usr/local/cargo/bin/neurocache-gateway /usr/local/bin/neurocache-gateway
 
-# The command to run your application
+# Install ca-certificates in runtime image
+RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+
 CMD ["neurocache-gateway"]
