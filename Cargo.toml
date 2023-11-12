@@ -5,9 +5,12 @@ edition = "2021"
 
 [dependencies]
 axum = "0.6.20"
+futures = "0.3"
 reqwest = "0.11.22"
+openssl = "0.10.59"
 tokio-stream = "0.1.14"
 tokio-postgres = "0.7.10"
+rdkafka = {version = "0.36.0", features = ["ssl", "sasl"] }
 tokio = { version = "1.33.0", features = ["full"] }
 agent_types = { path = "src/crates/agent_types" }
 supabase = { path = "src/crates/supabase" }

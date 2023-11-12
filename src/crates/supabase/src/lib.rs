@@ -1,7 +1,7 @@
 // src/crates/supabase/src/lib.rs
 
 use dotenv::dotenv;
-use logger::{log_error, log_info};
+use logger::log_error;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -35,7 +35,6 @@ pub async fn get_agent_graph(
     let response = client.execute(request).await?;
     if response.status().is_success() {
         let json: Value = response.json().await?;
-        log_info!("Raw JSON response: {:?}", json);
         Ok(json)
     } else {
         log_error!("Error response: {:?}", response.status());
