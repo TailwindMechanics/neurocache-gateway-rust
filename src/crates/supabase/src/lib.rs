@@ -1,3 +1,5 @@
+//path: src\crates\supabase\src\lib.rs
+
 // src/crates/supabase/src/lib.rs
 
 use dotenv::dotenv;

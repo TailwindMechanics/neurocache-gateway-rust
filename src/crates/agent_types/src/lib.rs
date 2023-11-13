@@ -1,3 +1,5 @@
+//path: src\crates\agent_types\src\lib.rs
+
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -7,7 +9,7 @@ pub struct RunAgentRequest {
     pub agent_id: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct AgentGraphData {
     pub edges: Vec<Edge>,
     pub nodes: Vec<Node>,
@@ -15,7 +17,7 @@ pub struct AgentGraphData {
     pub viewport: Option<Value>,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Edge {
     pub id: String,
     #[serde(rename = "type")]
@@ -30,7 +32,7 @@ pub struct Edge {
     pub target_handle: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Node {
     pub id: String,
     pub data: NodeData,
@@ -45,7 +47,7 @@ pub struct Node {
     pub dragging: Option<bool>,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct NodeData {
     pub body: String,
     #[serde(rename = "nodeId")]
@@ -59,7 +61,7 @@ pub struct NodeData {
     pub node_position: Position,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Handle {
     pub id: String,
     #[serde(rename = "type")]
@@ -68,7 +70,7 @@ pub struct Handle {
     pub offset: Position,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Position {
     pub x: f32,
     pub y: f32,

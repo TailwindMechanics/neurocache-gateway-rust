@@ -20,6 +20,8 @@ neurocache-gateway
    │  │  ├─ Cargo.toml
    │  │  └─ src
    │  │     ├─ internal
+   │  │     │  ├─ api_key_utils.rs
+   │  │     │  ├─ create_agent_stream.rs
    │  │     │  ├─ mod.rs
    │  │     │  └─ run_agent.rs
    │  │     └─ lib.rs
@@ -43,5 +45,6 @@ neurocache-gateway
    │  └─ supabase
    │     ├─ Cargo.toml
    │     └─ src
+   │        ├─ get-agent-graph.sql
    │        └─ lib.rs
    └─ main.rs
